@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>make your own event bitch</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>make an event. tell your friends. kiss your enemies.</h1>
+        <form action="" method="POST" id="eventmake">
+            <p>
+                <label for="name">GIVE ME UR NAME:</label>
+                <input type="text" id="name" name="name">
+            </p>
+            <p>
+                <label for="event">now...give me ur EVENT NAME:</label>
+                <input type="text" id="event" name="event" size=50>
+            </p>
+            <p>
+                <label for="pic">Pick a pic (lol):</label>
+                <input type="file" id="pic" name="pic">
+            </p>
+            <p>
+                <label for="desc">just...describe the event to me, would you?</label><br>
+                <textarea id="desc" name="desc" rows="10" cols="50"></textarea>
+            </p>
+            <p>
+                <label for="loc">oh fuck, right, where is it going to be?</label>
+                <input type="text" id="loc" name="loc" size=50>
+            </p>
+            <p>
+                <label for="day">what day is it? i might have to walk my frickin' doog</label>
+                <input type="date" id="day" name="day">
+            </p>
+            <p>
+                <label for="start">and when does this shindig start?</label>
+                <input type="time" id="start" name="start">
+            </p>
+            <p>
+                <label for="end">and it ends...when?</label>
+                <input type="time" id="end" name="end">
+            </p>
+            <p>
+                <label for="guestlist">who's coming?</label><br>
+                <textarea id="guestlist" name="guestlist" placeholder="separate names and contact info with commas, using a new line for each guest (probably)" rows="10" cols="50"></textarea>
+            </p>
+            <p>
+                <label for="editpass">wan 2 add a secwet phwase to give u absowute authowity? uwu</label>
+                <!--this should probably be a text field instead-->
+                <input type="password" id="editpass" name="editpass">
+            </p>
+            <p>
+                <label for="brianban">check this box if you'd like a button to temporarily ban brian wilcove</label>
+                <input type="checkbox" id="brianban" name="brianban">
+            </p>
+            <p>
+                everything look good? let's get this puppy going!
+                <input type="submit" value="MAKE MY SHIT">
+            </p>
+        </form>
+    </body>
+</html>
