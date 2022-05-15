@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>tell your friends~</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>okay. who's coming to this shindig?</h1>
+        <form action="../events/:event_id/attendees" method="POST" id="eventmake">
+            <p>
+                <label for="guest">NAME your guest:</label>
+                <input type="text" id="guest" name="guest">
+            </p>
+            <p>
+                <label for="guest-phone">GIVE ME THEIR #:</label>
+                <input type="text" id="guest-phone" name="guest-phone">
+            </p>
+            <p>
+                SMASH THE INVITE BUTTON:
+                <input type="submit" value="INVITE">
+            </p>
+            <!--maybe add an updated guest list here?-->
+        </form>
+    </body>
+</html>
