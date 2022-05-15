@@ -18,11 +18,11 @@
                     <div id="info">
                         <div class="infobox">
                             <p id="evt_host">Hosted by cat_luvr_0401</p>
-                            <p id="evt_date">May 13, 2022</p>
+                            <p id="evt_start">Starts: May 13, 2022, 9:00PM</p>
                         </div>
                         <div class="infobox">
                             <p id="evt_loc">101 Catskin Road</p>
-                            <p id="evt_time">9:00PM</p>
+                            <p id="evt_end">Ends: May 13, 2022, 11:00PM</p>
                         </div>
                     </div>
                     <div>
@@ -36,8 +36,25 @@
                         <!--validate the password on submit, right?-->
                         <input type="submit" value="edit!">
                     </form>
-                    <p>RSVP buttons</p>
-                    <p>comments section over here?</p>
+                    <br>
+                    <p><b>RSVP here!</b></p>
+                    <form action="" mode="POST" id="rsvp">
+                        <div>
+                            <input type="radio" id="going" name="rsvp-buttons" value="going">
+                            <label for="going">i'm going!</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="maybe" name="rsvp-buttons" value="maybe">
+                            <label for="maybe">i'm not sure...</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="not-going" name="rsvp-buttons" value="not-going">
+                            <label for="not-going">i can't go :(</label>
+                        </div>
+                        <input type="submit" value="rsvp! oh my god this is wider than i thought i'll fix that later">
+                    </form>
+                    <br>
+                    <p>comments section/discord chat over here?</p>
                 </div>
             </div>
         </section>

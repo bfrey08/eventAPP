@@ -48,6 +48,10 @@ img {
 #evt_title {
     text-align: center;
 }
+#rsvp {
+    display: flex;
+    flex-flow: column;
+}
 
 /* to-do
 add margins around form elements
