@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
-  POST '../events', to: 'events#new'
-  POST '../events/:event_id/attendees', to: 'attendees#new'
-  PATCH '../events/:event_id/attendees/:attendee_id', to: 'attendees#update'
+  get '/events/new', to: 'events#new'
+  post '/events/new', to: 'events#create'
+  get '/events/:event_id', to: 'events#show'
+  post '/events/:event_id/attendees', to: 'attendees#new'
+  patch '/events/:event_id/attendees/:attendee_id', to: 'attendees#update'
 end
