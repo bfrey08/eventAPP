@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get '/events/:event_id', to: 'events#show'
   post '/events/:event_id/attendees', to: 'attendees#new'
   patch '/events/:event_id/attendees/:attendee_id', to: 'attendees#update'
+
+  post '/login', to: 'sessions#create'
 end

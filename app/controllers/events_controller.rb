@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
     def show
       @event = Event.find(params[:event_id])
+      session[:return_to] = "/events/#{@event.id}"
     end
 
     def new

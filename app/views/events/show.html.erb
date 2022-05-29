@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>this is your event bitch</title>
+        <title>this is your event bitch </title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <section id="eventfront">
             <div id="wrapper">
                 <div id="left">
                     <div>
-                        <img id="evt_header" src="placeholder.jpg" alt="event header image">
+                        <img id="evt_header" src="" alt="event header image">
                     </div>
                     <div>
                         <h1 id="evt_title"><%= @event.name %></h1>
@@ -30,10 +29,11 @@
                     </div>
                 </div>
                 <div id="right">
-                    <form action="" mode="POST" id="editaccess">
+                    <form action="/login" method="POST" id="editaccess">
                         <label for="editauth">edit the event?</label>
                         <input type="password" id="editauth" name="editauth" size=20>
-                        <!--validate the password on submit, right?-->
+                        <input type="hidden" id="event_id" name="event_id" value=<%="#{@event.id}"%>
+                        <!-- validate the password on submit, right? -->
                         <input type="submit" value="edit!">
                     </form>
                     <br>
@@ -55,8 +55,14 @@
                     </form>
                     <br>
                     <p>comments section/discord chat over here?</p>
+                    <% if session[:event_id] == @event.id %>
+                    <p> <%= "you are logged in"  %> </p>
+                    <% end %>
                 </div>
             </div>
         </section>
+        <% if session[:event_id] == @event.id %>
+         <%= "you are logged in"  %>
+        <% end %>
     </body>
 </html>
