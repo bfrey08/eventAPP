@@ -1,12 +1,14 @@
 class EventsController < ApplicationController
 
-    def show
-      @event = Event.find(params[:event_id])
-      session[:return_to] = "/events/#{@event.id}"
-    end
+  def show
+    @event = Event.find(params[:event_id])
+    session[:return_to] = "/events/#{@event.id}"
 
-    def new
-    end
+    @host = @event.attendees.first
+  end
+
+  def new
+  end
 
   def create
     event = Event.create(

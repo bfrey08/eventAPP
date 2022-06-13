@@ -16,7 +16,7 @@
                     </div>
                     <div id="info">
                         <div class="infobox">
-                            <p id="evt_host">Hosted by cat_luvr_0401</p>
+                            <p id="evt_host">Hosted by: <%= @host.name %></p>
                             <p id="evt_start"> <%= @event.start %> </p>
                         </div>
                         <div class="infobox">
@@ -61,8 +61,5 @@
                 </div>
             </div>
         </section>
-        <% if session[:event_id] == @event.id %>
-         <%= "you are logged in"  %>
-        <% end %>
     </body>
 </html>
