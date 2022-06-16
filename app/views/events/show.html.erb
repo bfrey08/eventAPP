@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div id="right">
-                    <form action="/login" method="POST" id="editaccess">
+                    <form action="/events/<%="#{@event.id}"%>/login" method="POST" id="editaccess">
                         <label for="editauth">edit the event?</label>
                         <input type="password" id="editauth" name="editauth" size=20>
                         <input type="hidden" id="event_id" name="event_id" value=<%="#{@event.id}"%>
@@ -37,8 +37,10 @@
                         <input type="submit" value="edit!">
                     </form>
                     <br>
-                    <p><b>RSVP here!</b></p>
-                    <form action="" mode="POST" id="rsvp">
+                    <% if @attendee %>
+
+                    <p><b>RSVP here, <%= @attendee.name %>!</b></p>
+                    <!-- <form action="/events/#{@event.id}/attendees/#{@attendee.id}" method="PATCH" id="rsvp">
                         <div>
                             <input type="radio" id="going" name="rsvp-buttons" value="going">
                             <label for="going">i'm going!</label>
@@ -49,10 +51,20 @@
                         </div>
                         <div>
                             <input type="radio" id="not-going" name="rsvp-buttons" value="not-going">
-                            <label for="not-going">i can't go :(</label>
+                            <label for="not_going">i can't go :(</label>
                         </div>
                         <input type="submit" value="rsvp! oh my god this is wider than i thought i'll fix that later">
-                    </form>
+                    </form> -->
+                      <%= form_with(url: "/events/#{@event.id}/attendees/#{@attendee.id}", method: :patch, id: "rsvp") do |form| %>
+                        <%= form.radio_button :rsvp, 'going' %>
+                        <%= form.label :going, "i'm going!" %>
+                        <%= form.radio_button :rsvp, 'maybe' %>
+                        <%= form.label :maybe, "i'm not sure..." %>
+                        <%= form.radio_button :rsvp, 'not_going' %>
+                        <%= form.label :not_going, "i can't go :(" %>
+                        <%= form.submit 'Submit' %>
+                      <% end %>
+                    <% end %>
                     <br>
                     <p>comments section/discord chat over here?</p>
                     <% if session[:event_id] == @event.id %>

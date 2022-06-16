@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_230622) do
     t.string "name"
     t.string "phone_number"
     t.string "api_key"
+    t.string "rsvp"
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

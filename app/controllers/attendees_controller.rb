@@ -1,5 +1,7 @@
 class AttendeesController < ApplicationController
     def update
-        #read/record rsvp
+      attendee = Attendee.find(params[:attendee_id])
+      attendee.update(rsvp: params[:rsvp])
+      attendee.save
     end
 end

@@ -3,7 +3,9 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:event_id])
     session[:return_to] = "/events/#{@event.id}"
-
+    if session[:attendee]
+      @attendee = Attendee.find(session[:attendee])
+    end
     @host = @event.attendees.first
   end
 
@@ -30,9 +32,9 @@ class EventsController < ApplicationController
         phone_number: params['phone'], #this is also fine
     )
 
-    host_attendee.password = SecureRandom.hex
+    host_attendee.update(api_key: SecureRandom.hex)
     host_attendee.save
 
-    redirect_to "/events/#{event.id}"
+    redirect_to "/events/#{event.id}/attendees/#{host_attendee.id}/login/#{host_attendee.api_key}"
   end
 end
