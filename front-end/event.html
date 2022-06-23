@@ -14,6 +14,15 @@
                     </div>
                     <div>
                         <h1 id="evt_title">CAT WASHING PARTY</h1>
+                        <button class="editbutton" onclick="hostEdit('evt_title');"><img src="edit-pencil.png" alt="small edit pencil"></button>
+                        <div id="evt_title_edit" hidden="true">
+                            <form action="" method="POST">
+                                <label for="titleEdit">you want to change the TITLE? okay then:</label>
+                                <input type="text" name="titleEdit" value="new event name">
+                                <input type="submit" value="change it, baby!">
+                            </form>
+                            <button onclick="editCancel('evt_title');">cancel</button>
+                        </div>
                     </div>
                     <div id="info">
                         <div class="infobox">
@@ -58,5 +67,22 @@
                 </div>
             </div>
         </section>
+        <script>
+            const editButtons = document.querySelectorAll('.editbutton');
+            function hostEdit(element) {
+                document.getElementById(element).hidden = true;
+                document.getElementById(`${element}_edit`).hidden = false;
+                for (i = 0; i < editButtons.length; i++) {
+                    editButtons[i].hidden = true;
+                }
+            }
+            function editCancel(element) {
+                document.getElementById(element).hidden = false;
+                document.getElementById(`${element}_edit`).hidden = true;
+                for (i = 0; i < editButtons.length; i++) {
+                    editButtons[i].hidden = false;
+                }
+            }
+        </script>
     </body>
 </html>
