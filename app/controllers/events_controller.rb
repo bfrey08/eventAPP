@@ -7,6 +7,7 @@ class EventsController < ApplicationController
       @attendee = Attendee.find(session[:attendee])
     end
     @host = @event.attendees.first
+    @attendees = @event.attendees.all
   end
 
   def new

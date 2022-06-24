@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>tell your friends~</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            .attendee {
+                display: flex;
+                flex-flow: row;
+            }
+            form p {
+                margin: 1%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>okay. who's coming to this shindig?</h1>
+        <p>
+            let's add...
+            <button onclick="add_attendee();">another one</button>
+        </p>
+        <form action="../events/:event_id/attendees" method="POST" id="invites">
+            <div class="attendee">
+                <p>
+                    <label for="guest">NAME your guest:</label>
+                    <input type="text" id="guest" name="guest">
+                </p>
+                <p>
+                    <label for="guest-phone">GIVE ME THEIR #:</label>
+                    <input type="text" id="guest-phone" name="guest-phone">
+                </p>
+            </div>
+            <p>
+                all done? THEN SMASH THE INVITE BUTTON:
+                <input type="submit" value="INVITE">
+            </p>
+        </form>
+        <script>
+            let khaled = new Audio('another-one.mp3');
+
+            function add_attendee() {
+                let form = document.getElementById('invites');
+                
+                //add if statement to check for empty fields?
+                //or can the back end ignore empty fields?
+                let div = document.createElement('div');
+                div.classList.add('attendee');
+                
+                let p1 = document.createElement('p');
+                let label1 = document.createElement('label');
+                label1.for = 'guest';
+                label1.innerHTML = 'NAME your guest:';
+                let input1 = document.createElement('input');
+                input1.type = 'text';
+                input1.name = 'guest';
+                p1.appendChild(label1);
+                p1.appendChild(input1);
+
+                let p2 = document.createElement('p');
+                let label2 = document.createElement('label');
+                label2.for = 'guest-phone';
+                label2.innerHTML = 'GIVE ME THEIR #:';
+                let input2 = document.createElement('input');
+                input2.type = 'text';
+                input2.name = 'guest-phone';
+                p2.appendChild(label2);
+                p2.appendChild(input2);
+
+                div.appendChild(p1);
+                div.appendChild(p2);
+                form.insertBefore(div, form.children[form.children.length - 1]);
+                
+                khaled.play();
+            }
+        </script>
+    </body>
+</html>

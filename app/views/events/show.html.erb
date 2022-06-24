@@ -66,6 +66,11 @@
                       <% end %>
                     <% end %>
                     <br>
+                      <% @attendees.each do |attendee| %>
+                      <%=   "#{attendee.name}: #{attendee.rsvp}" %>
+                      <% end %>
+
+                    <br>
                     <p>comments section/discord chat over here?</p>
                     <% if session[:event_id] == @event.id %>
                     <p> <%= "you are logged in"  %> </p>
