@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   post '/events/:event_id/login', to: 'event_sessions#create'
   get '/events/:event_id/attendees/:attendee_id/login/:api_key', to: 'attendee_sessions#create'
+
+  get '/events/:event_id/attendees/new', to: 'attendees#new'
 end
