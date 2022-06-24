@@ -37,16 +37,15 @@
             </p>
         </form>
         <script>
-            let khaled = new Audio('another-one.mp3');
-
+            let khaled = new Audio('<%=audio_path 'another-one.mp3'%>');
             function add_attendee() {
                 let form = document.getElementById('invites');
-                
+
                 //add if statement to check for empty fields?
                 //or can the back end ignore empty fields?
                 let div = document.createElement('div');
                 div.classList.add('attendee');
-                
+
                 let p1 = document.createElement('p');
                 let label1 = document.createElement('label');
                 label1.for = 'guest';
@@ -70,7 +69,7 @@
                 div.appendChild(p1);
                 div.appendChild(p2);
                 form.insertBefore(div, form.children[form.children.length - 1]);
-                
+
                 khaled.play();
             }
         </script>
