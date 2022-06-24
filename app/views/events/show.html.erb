@@ -43,21 +43,6 @@
                     <% if @attendee %>
 
                     <p><b>RSVP here, <%= @attendee.name %>!</b></p>
-                    <!-- <form action="/events/#{@event.id}/attendees/#{@attendee.id}" method="PATCH" id="rsvp">
-                        <div>
-                            <input type="radio" id="going" name="rsvp-buttons" value="going">
-                            <label for="going">i'm going!</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="maybe" name="rsvp-buttons" value="maybe">
-                            <label for="maybe">i'm not sure...</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="not-going" name="rsvp-buttons" value="not-going">
-                            <label for="not_going">i can't go :(</label>
-                        </div>
-                        <input type="submit" value="rsvp! oh my god this is wider than i thought i'll fix that later">
-                    </form> -->
                       <%= form_with(url: "/events/#{@event.id}/attendees/#{@attendee.id}", method: :patch, id: "rsvp") do |form| %>
                         <%= form.radio_button :rsvp, 'going' %>
                         <%= form.label :going, "i'm going!" %>
@@ -73,7 +58,6 @@
                       <%=   "#{attendee.name}: #{attendee.rsvp}" %>
                       <br>
                       <% end %>
-
                     <br>
                     <p>comments section/discord chat over here?</p>
                     <% if session[:event_id] == @event.id %>
