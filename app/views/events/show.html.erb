@@ -29,13 +29,16 @@
                     </div>
                 </div>
                 <div id="right">
-                    <form action="/events/<%="#{@event.id}"%>/login" method="POST" id="editaccess">
-                        <label for="editauth">edit the event?</label>
-                        <input type="password" id="editauth" name="editauth" size=20>
-                        <input type="hidden" id="event_id" name="event_id" value=<%="#{@event.id}"%>
-                        <!-- validate the password on submit, right? -->
-                        <input type="submit" value="edit!">
-                    </form>
+                    <% if session[:event_id] %>
+                      <p> <%= button_to("muggle mode", "/events/#{@event.id}/login", method: :delete) %> </p>
+                    <% else %>
+                      <%= form_with(url: "/events/#{@event.id}/login", method: :post, id: "editaccess") do |form| %>
+                        <%= form.label("editaccess", "become a wizard, harry") %>
+                        <%= form.password_field("editauth") %>
+                        <%= form.hidden_field("event_id", value: @event.id) %>
+                        <%= form.submit 'yes' %>
+                      <% end %>
+                    <% end %>
                     <br>
                     <% if @attendee %>
 
@@ -74,6 +77,9 @@
                     <p>comments section/discord chat over here?</p>
                     <% if session[:event_id] == @event.id %>
                     <p> <%= link_to("invite yur m8s", "/events/#{@event.id}/attendees/new") %> </p>
+                    <p> <%= button_to("logout", "/events/#{@event.id}/login", method: :delete) %> </p>
+                    <% end %>
+                    <% if @attendee %>
                     <% end %>
                 </div>
             </div>
