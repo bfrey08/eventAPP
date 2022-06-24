@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   post '/events/new', to: 'events#create'
   get '/events/:event_id', to: 'events#show'
   get '/events/:event_id', to: 'events#show'
-  post '/events/:event_id/attendees', to: 'attendees#new'
-  patch '/events/:event_id/attendees/:attendee_id', to: 'attendees#update'
 
   delete '/events/:event_id/login', to: 'event_sessions#destroy'
   post '/events/:event_id/login', to: 'event_sessions#create'
@@ -16,4 +14,9 @@ Rails.application.routes.draw do
   get '/events/:event_id/attendees/:attendee_id/login/:api_key', to: 'attendee_sessions#create'
 
   get '/events/:event_id/attendees/new', to: 'attendees#new'
+  post '/events/:event_id/attendees', to: 'attendees#create'
+  patch '/events/:event_id/attendees/:attendee_id', to: 'attendees#update'
+
+
+
 end
