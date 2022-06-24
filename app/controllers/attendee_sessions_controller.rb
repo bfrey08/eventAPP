@@ -7,11 +7,4 @@ class AttendeeSessionsController < ApplicationController
     redirect_to "/events/#{params[:event_id]}"
   end
 
-  def destroy
-    cookies.delete(:_event_app_session)
-    cookies.delete(:_session_id)
-    session.delete(:attendee)
-    binding.pry
-    redirect_to "/events/#{params[:event_id]}"
-  end
 end
