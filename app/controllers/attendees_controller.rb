@@ -10,7 +10,6 @@ class AttendeesController < ApplicationController
 
     def create
       event = Event.find(params[:event_id])
-      binding.pry
       names = params[:name].to_a
       phone_numbers = params[:phone_number].to_a
       attendee_array = []
