@@ -15,7 +15,7 @@ class AttendeesController < ApplicationController
       attendee_array = []
       attendee_array << names
       attendee_array << phone_numbers
-      attendee_array << [SecureRandom.hex]
+      attendee_array << Array.new(names.count, SecureRandom.hex)
       attendee_data = attendee_array.transpose
       array_of_hash = attendee_data.map do |attendee|
         [[:name, :phone_number, :api_key], attendee].transpose.to_h
@@ -23,7 +23,7 @@ class AttendeesController < ApplicationController
 
 
       attendee_list = event.attendees.create(array_of_hash)
-      TwilioService.create_message(attendee_list) 
+      TwilioService.create_message(attendee_list)
 
       redirect_to "/events/#{event.id}"
     end
