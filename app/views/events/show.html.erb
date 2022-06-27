@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div id="right">
-                    <% if session[:event_id] %>
+                    <% if session[:event_id] == @event.id%>
                       <p> <%= button_to("muggle mode", "/events/#{@event.id}/login", method: :delete) %> </p>
                     <% else %>
                       <%= form_with(url: "/events/#{@event.id}/login", method: :post, id: "editaccess") do |form| %>
