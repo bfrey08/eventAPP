@@ -9,8 +9,7 @@ class EventSessionsController < ApplicationController
 
   def destroy
     cookies.delete(:_event_app_session)
-    cookies.delete(:_session_id)
-    session.clear
+    session.delete(:event_id)
     redirect_to "/events/#{params[:event_id]}"
   end
 end
