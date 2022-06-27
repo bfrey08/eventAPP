@@ -9,24 +9,34 @@ class AttendeesController < ApplicationController
     end
 
     def create
+      event = Event.find(params[:event_id])
+      binding.pry
       names = params[:name].to_a
       phone_numbers = params[:phone_number].to_a
-      event = Event.find(params[:event_id])
       attendee_array = []
       attendee_array << names
       attendee_array << phone_numbers
+      attendee_array << [SecureRandom.hex]
       attendee_data = attendee_array.transpose
-      attendee_data.each do |attendee_data|
-        api_key = SecureRandom.hex
-        attendee = event.attendees.create(name: attendee_data[0], phone_number: attendee_data[1], api_key: api_key)
-        body = "you are invited to '#{event.name}' by #{event.attendees.first.name}, join us: http://localhost:3000/events/#{event.id}/attendees/#{attendee.id}/login/#{api_key}"
-        TwilioService.create_message(attendee.phone_number, body) if Rails.application.credentials.twilio_account_SID
+      array_of_hash = attendee_data.map do |attendee|
+        [[:name, :phone_number, :api_key], attendee].transpose.to_h
       end
+
+
+      attendee_list = event.attendees.create(array_of_hash)
+      TwilioService.create_message(attendee_list) if Rails.application.credentials.twilio_account_SID
+
       redirect_to "/events/#{event.id}"
     end
 
     def new
       @event = Event.find(params[:event_id])
       @attendee_data = []
+    end
+
+    private
+
+    def attendee_params
+      params.permit(:name, :phone_number)
     end
 end

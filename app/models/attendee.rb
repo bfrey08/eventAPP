@@ -19,4 +19,7 @@ class Attendee < ApplicationRecord
     self.api_key = @password
   end
 
+  def self.add_api_keys
+    self.update(ids, {api_key: SecureRandom.hex})
+  end
 end
