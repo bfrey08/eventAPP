@@ -23,7 +23,7 @@ class AttendeesController < ApplicationController
 
 
       attendee_list = event.attendees.create(array_of_hash)
-      TwilioService.create_message(attendee_list) if Rails.application.credentials.twilio_account_SID
+      TwilioService.create_message(attendee_list) 
 
       redirect_to "/events/#{event.id}"
     end
