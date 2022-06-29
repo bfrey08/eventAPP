@@ -1,0 +1,4 @@
+<% @attendees.each do |attendee| %>
+<p> <%= link_to(attendee.event.quick_details, "/events/#{attendee.event.id}/attendees/#{attendee.id}/login/#{attendee.api_key}") %> </p>
+  <br>
+<% end %>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>this is your event bitch </title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <section id="eventfront">
+            <div id="wrapper">
+              <%= form_with(url: "/verify", method: :post, id: "findaccount") do |form| %>
+                <%= form.label("findaccount", "phone number please") %>
+                <%= form.password_field("phone_number") %>
+                <%= form.submit 'take it' %>
+              <% end %>
+            </div>
+        </section>
+    </body>
+</html>

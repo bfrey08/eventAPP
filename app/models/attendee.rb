@@ -19,4 +19,12 @@ class Attendee < ApplicationRecord
     self.api_key = @password
   end
 
+  def phone_number_with_prefix
+    phone_number.delete(' ')
+    if phone_number[0] != '+'
+      "+1#{phone_number}"
+    else
+      phone_number
+    end
+  end
 end

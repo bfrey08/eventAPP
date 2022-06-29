@@ -12,4 +12,9 @@ class Event < ApplicationRecord
     self.password_digest = @password
   end
 
+  def quick_details
+    location1 = " @ #{location}" if location
+    start1 = " on #{start}" if start
+    "#{name + location1 or '' + start1 or ''}"
+  end
 end
