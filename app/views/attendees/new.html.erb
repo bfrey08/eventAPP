@@ -24,11 +24,11 @@
             <div class="attendee">
                 <p>
                     <p>NAME your guest:</p>
-                    <input type="text" id="guest" name="attendee1[]">
+                    <input type="text" id="guest" name="attendee[][name]">
                 </p>
                 <p>
                     <p>GIVE ME THEIR #:</p>
-                    <input type="text" id="guest-phone" class="phone" onkeydown="numberFormat(this)" name="attendee1[]">
+                    <input type="text" id="guest-phone" class="phone" onkeydown="numberFormat(this)" name="attendee[][phone_number]">
                 </p>
             </div>
             <p>
@@ -49,7 +49,7 @@
                 label1.innerHTML = 'NAME your guest:';
                 let input1 = document.createElement('input');
                 input1.type = 'text';
-                input1.name = `attendee${form.children.length}`;
+                input1.name = `attendee[][name]`;
                 p1.appendChild(label1);
                 p1.appendChild(input1);
 
@@ -60,7 +60,7 @@
                 input2.type = 'text';
                 input2.classList.add('phone');
                 input2.onkeydown = 'numberFormat(this)'
-                input2.name = `attendee${form.children.length}`;
+                input2.name = `attendee[][phone_number]`;
                 p2.appendChild(label2);
                 p2.appendChild(input2);
 
