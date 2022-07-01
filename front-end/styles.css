@@ -16,28 +16,11 @@ img {
 }
 .editbutton {
     color: #eee;
-    background-color: #333;
+    background-color: #222;
     border: none;
 }
 
 /* event front styles */
-#wrapper {
-    display: flex;
-    width: 100%;
-}
-#left, #right {
-    background-color: #333;
-    padding: 2%;
-    border-radius: 10px;
-}
-#left {
-    width: 55%;
-    margin: 1.25%;
-}
-#right {
-    width: 40%;
-    margin: 1.25%;
-}
 .infobox {
     display: flex;
     justify-content: space-between;
@@ -57,6 +40,3 @@ img {
     display: flex;
     flex-flow: column;
 }
-
-/* to-do
-add margins around form elements
