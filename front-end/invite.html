@@ -28,7 +28,7 @@
                 </p>
                 <p>
                     <label for="guest-phone">GIVE ME THEIR #:</label>
-                    <input type="text" id="guest-phone" name="guest-phone">
+                    <input type="text" id="guest-phone" onkeydown="numberFormat(this)" name="attendee1[]">
                 </p>
             </div>
             <p>
@@ -64,6 +64,7 @@
                 let input2 = document.createElement('input');
                 input2.type = 'text';
                 input2.name = 'guest-phone';
+                input2.onkeydown = function() {numberFormat(this)};
                 p2.appendChild(label2);
                 p2.appendChild(input2);
 
@@ -72,6 +73,23 @@
                 form.insertBefore(div, form.children[form.children.length - 1]);
                 
                 khaled.play();
+            }
+            function numberFormat(field) {
+                const formattedNumber = formatPhone(field.value);
+                field.value = formattedNumber;
+            }
+            function formatPhone(value) {
+                if (!value) {return value;}
+                const numString = value.replace(/[^\d]/g, '');
+                const numStringLength = numString.length;
+
+                if (numStringLength < 4) {
+                    return numString;
+                } else if (numStringLength < 7) {
+                    return `(${numString.slice(0,3)}) ${numString.slice(3)}`;
+                } else {
+                    return `(${numString.slice(0,3)}) ${numString.slice(3,6)}-${numString.slice(6,9)}`;
+                }
             }
         </script>
     </body>

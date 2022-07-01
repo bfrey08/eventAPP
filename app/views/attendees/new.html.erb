@@ -28,7 +28,7 @@
                 </p>
                 <p>
                     <p>GIVE ME THEIR #:</p>
-                    <input type="text" id="guest-phone" class="phone" onkeydown="numberFormat(this)" name="attendee[][phone_number]">
+                    <input type="text" id="guest-phone" onkeydown="numberFormat(this)" name="attendee[][phone_number]">
                 </p>
             </div>
             <p>
@@ -58,8 +58,7 @@
                 label2.innerHTML = 'GIVE ME THEIR #:';
                 let input2 = document.createElement('input');
                 input2.type = 'text';
-                input2.classList.add('phone');
-                input2.onkeydown = 'numberFormat(this)'
+                input2.onkeydown = function() {numberFormat(this)};
                 input2.name = `attendee[][phone_number]`;
                 p2.appendChild(label2);
                 p2.appendChild(input2);
@@ -87,9 +86,9 @@
                 if (numStringLength < 4) {
                     return numString;
                 } else if (numStringLength < 7) {
-                    return `(${numStringLength.slice(0,3)}) ${numStringLength.slice(3)}`;
+                    return `(${numString.slice(0,3)}) ${numString.slice(3)}`;
                 } else {
-                    return `(${numStringLength.slice(0,3)}) ${numStringLength.slice(3,6)}-${numStringLength.slice(6,9)}`;
+                    return `(${numString.slice(0,3)}) ${numString.slice(3,6)}-${numString.slice(6,9)}`;
                 }
             }
         </script>
