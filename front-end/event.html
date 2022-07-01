@@ -7,65 +7,59 @@
     </head>
     <body>
         <section id="eventfront">
-            <div id="wrapper">
-                <div id="left">
-                    <div>
-                        <img id="evt_header" src="placeholder.jpg" alt="event header image">
-                    </div>
-                    <div>
-                        <h1 id="evt_title">CAT WASHING PARTY</h1>
-                        <button class="editbutton" onclick="hostEdit('evt_title');"><img src="edit-pencil.png" alt="small edit pencil"></button>
-                        <div id="evt_title_edit" hidden="true">
-                            <form action="" method="POST">
-                                <label for="titleEdit">you want to change the TITLE? okay then:</label>
-                                <input type="text" name="titleEdit" value="new event name">
-                                <input type="submit" value="change it, baby!">
-                            </form>
-                            <button onclick="editCancel('evt_title');">cancel</button>
-                        </div>
-                    </div>
-                    <div id="info">
-                        <div class="infobox">
-                            <p id="evt_host">Hosted by cat_luvr_0401</p>
-                            <p id="evt_start">Starts: May 13, 2022, 9:00PM</p>
-                        </div>
-                        <div class="infobox">
-                            <p id="evt_loc">101 Catskin Road</p>
-                            <p id="evt_end">Ends: May 13, 2022, 11:00PM</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p id="evt_desc">I don't know about you guys, but washing my cat is a fucking pain and a half! The way I figure, if we all got together to hang out, it would make the job that much easier! I'm just now realizing the innuendo within this fake event I made up, but it's too late so I'm rolling with it anyway. Bring your four-legged CAT to this four-legged CAT WASHING PARTY!</p>
-                    </div>
-                </div>
-                <div id="right">
-                    <form action="" mode="POST" id="editaccess">
-                        <label for="editauth">edit the event?</label>
-                        <input type="password" id="editauth" name="editauth" size=20>
-                        <!--validate the password on submit, right?-->
-                        <input type="submit" value="edit!">
+            <div>
+                <img id="evt_header" src="placeholder.jpg" alt="event header image">
+            </div>
+            <div>
+                <h1 id="evt_title">CAT WASHING PARTY</h1>
+                <button class="editbutton" onclick="hostEdit('evt_title');"><img src="edit-pencil.png" alt="small edit pencil"></button>
+                <div id="evt_title_edit" hidden="true">
+                    <form action="" method="POST">
+                        <label for="titleEdit">you want to change the TITLE? okay then:</label>
+                        <input type="text" name="titleEdit" value="new event name">
+                        <input type="submit" value="change it, baby!">
                     </form>
-                    <br>
-                    <p><b>RSVP here!</b></p>
-                    <form action="" mode="POST" id="rsvp">
-                        <div>
-                            <input type="radio" id="going" name="rsvp-buttons" value="going">
-                            <label for="going">i'm going!</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="maybe" name="rsvp-buttons" value="maybe">
-                            <label for="maybe">i'm not sure...</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="not-going" name="rsvp-buttons" value="not-going">
-                            <label for="not-going">i can't go :(</label>
-                        </div>
-                        <input type="submit" value="rsvp! oh my god this is wider than i thought i'll fix that later">
-                    </form>
-                    <br>
-                    <p>comments section/discord chat over here?</p>
+                    <button onclick="editCancel('evt_title');">cancel</button>
                 </div>
             </div>
+            <div id="info">
+                <div class="infobox">
+                    <p id="evt_host">Hosted by cat_luvr_0401</p>
+                    <p id="evt_start">Starts: May 13, 2022, 9:00PM</p>
+                </div>
+                <div class="infobox">
+                    <p id="evt_loc">101 Catskin Road</p>
+                    <p id="evt_end">Ends: May 13, 2022, 11:00PM</p>
+                </div>
+            </div>
+            <div>
+                <p id="evt_desc">I don't know about you guys, but washing my cat is a fucking pain and a half! The way I figure, if we all got together to hang out, it would make the job that much easier! I'm just now realizing the innuendo within this fake event I made up, but it's too late so I'm rolling with it anyway. Bring your four-legged CAT to this four-legged CAT WASHING PARTY!</p>
+            </div>
+            <form action="" mode="POST" id="editaccess">
+                <label for="editauth">edit the event?</label>
+                <input type="password" id="editauth" name="editauth" size=20>
+                <!--validate the password on submit, right?-->
+                <input type="submit" value="edit!">
+            </form>
+            <br>
+            <p><b>RSVP here!</b></p>
+            <form action="" mode="POST" id="rsvp">
+                <div>
+                    <input type="radio" id="going" name="rsvp-buttons" value="going">
+                    <label for="going">i'm going!</label>
+                </div>
+                <div>
+                    <input type="radio" id="maybe" name="rsvp-buttons" value="maybe">
+                    <label for="maybe">i'm not sure...</label>
+                </div>
+                <div>
+                    <input type="radio" id="not-going" name="rsvp-buttons" value="not-going">
+                    <label for="not-going">i can't go :(</label>
+                </div>
+                <input type="submit" value="rsvp! oh my god this is wider than i thought i'll fix that later">
+            </form>
+            <br>
+            <p>comments section/discord chat over here?</p>
         </section>
         <script>
             const editButtons = document.querySelectorAll('.editbutton');

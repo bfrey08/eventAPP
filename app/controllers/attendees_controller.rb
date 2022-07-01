@@ -10,19 +10,11 @@ class AttendeesController < ApplicationController
 
     def create
       event = Event.find(params[:event_id])
-      names = params[:name].to_a
-      phone_numbers = params[:phone_number].to_a
-      attendee_array = []
-      attendee_array << names
-      attendee_array << phone_numbers
-      attendee_array << Array.new(names.count, SecureRandom.hex)
-      attendee_data = attendee_array.transpose
-      array_of_hash = attendee_data.map do |attendee|
-        [[:name, :phone_number, :api_key], attendee].transpose.to_h
+      attendee_data = attendee_params.each do |attendee|
+        attendee[:api_key] = SecureRandom.hex
       end
 
-
-      attendee_list = event.attendees.create(array_of_hash)
+      attendee_list = event.attendees.create(attendee_data)
       TwilioService.create_message(attendee_list)
 
       redirect_to "/events/#{event.id}"
@@ -36,6 +28,6 @@ class AttendeesController < ApplicationController
     private
 
     def attendee_params
-      params.permit(:name, :phone_number)
+      params.permit(:attendee => [:name, :phone_number]).to_h[:attendee]
     end
 end

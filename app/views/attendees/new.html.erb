@@ -23,17 +23,17 @@
         <form action="/events/<%= @event.id %>/attendees" method="POST" id="invites">
             <div class="attendee">
                 <p>
-                    <label for="guest">NAME your guest:</label>
-                    <input type="text" id="guest" name="name[]">
+                    <p>NAME your guest:</p>
+                    <input type="text" id="guest" name="attendee[][name]">
                 </p>
                 <p>
-                    <label for="guest-phone">GIVE ME THEIR #:</label>
-                    <input type="text" id="guest-phone" name="phone_number[]">
+                    <p>GIVE ME THEIR #:</p>
+                    <input type="text" id="guest-phone" onkeydown="numberFormat(this)" name="attendee[][phone_number]">
                 </p>
             </div>
             <p>
                 all done? THEN SMASH THE INVITE BUTTON:
-                <input type="submit" value="INVITE">
+                <input type="submit" value="INVITE" onclick="return disable(this);">
             </p>
         </form>
         <script>
@@ -41,28 +41,25 @@
             function add_attendee() {
                 let form = document.getElementById('invites');
 
-                //add if statement to check for empty fields?
-                //or can the back end ignore empty fields?
                 let div = document.createElement('div');
                 div.classList.add('attendee');
 
                 let p1 = document.createElement('p');
-                let label1 = document.createElement('label');
-                label1.for = 'guest';
+                let label1 = document.createElement('p');
                 label1.innerHTML = 'NAME your guest:';
                 let input1 = document.createElement('input');
                 input1.type = 'text';
-                input1.name = 'name[]';
+                input1.name = `attendee[][name]`;
                 p1.appendChild(label1);
                 p1.appendChild(input1);
 
                 let p2 = document.createElement('p');
-                let label2 = document.createElement('label');
-                label2.for = 'guest-phone';
+                let label2 = document.createElement('p');
                 label2.innerHTML = 'GIVE ME THEIR #:';
                 let input2 = document.createElement('input');
                 input2.type = 'text';
-                input2.name = 'phone_number[]';
+                input2.onkeydown = function() {numberFormat(this)};
+                input2.name = `attendee[][phone_number]`;
                 p2.appendChild(label2);
                 p2.appendChild(input2);
 
@@ -71,6 +68,28 @@
                 form.insertBefore(div, form.children[form.children.length - 1]);
 
                 khaled.play();
+            }
+            function disable(obj) {
+                obj.form.submit();
+                obj.disabled = 'disabled';
+                return true;
+            }
+            function numberFormat(field) {
+                const formattedNumber = formatPhone(field.value);
+                field.value = formattedNumber;
+            }
+            function formatPhone(value) {
+                if (!value) {return value;}
+                const numString = value.replace(/[^\d]/g, '');
+                const numStringLength = numString.length;
+
+                if (numStringLength < 4) {
+                    return numString;
+                } else if (numStringLength < 7) {
+                    return `(${numString.slice(0,3)}) ${numString.slice(3)}`;
+                } else {
+                    return `(${numString.slice(0,3)}) ${numString.slice(3,6)}-${numString.slice(6,9)}`;
+                }
             }
         </script>
     </body>

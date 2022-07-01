@@ -7,6 +7,7 @@ class Attendee < ApplicationRecord
   has_many :polls
   has_many :attendee_responses
   has_many :responses, through: :attendee_responses
+  validates :phone_number, format: { with: /\(\d{3}\)\s\d{3}-\d{4}/, message: 'phone number format (555) 555-5555'}
   include BCrypt
 
 
@@ -20,11 +21,7 @@ class Attendee < ApplicationRecord
   end
 
   def phone_number_with_prefix
-    phone_number.delete(' ')
-    if phone_number[0] != '+'
-      "+1#{phone_number}"
-    else
-      phone_number
-    end
+    mod_phone = phone_number.gsub(/[^\d]/, '')
+    "+1#{mod_phone}"
   end
 end
