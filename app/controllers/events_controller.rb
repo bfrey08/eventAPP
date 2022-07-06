@@ -40,6 +40,8 @@ class EventsController < ApplicationController
     host_attendee.update(api_key: SecureRandom.hex)
     host_attendee.save
 
+    primary_room = host_attendee.rooms.create(name: 'primary room')
+
     redirect_to "/events/#{event.id}/attendees/#{host_attendee.id}/login/#{host_attendee.api_key}"
   end
 end

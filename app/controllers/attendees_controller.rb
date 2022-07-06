@@ -15,6 +15,11 @@ class AttendeesController < ApplicationController
       end
 
       attendee_list = event.attendees.create(attendee_data)
+
+      attendee_ids = attendee_list.map { |attendee| attendee.id}
+      attendee_list.each do |attendee|
+        Chat.create!(message: nil, attendee_id: attendee.id, room_id: event.rooms.find_by(name: "primary room").id)
+      end
       TwilioService.create_message(attendee_list)
 
       redirect_to "/events/#{event.id}"

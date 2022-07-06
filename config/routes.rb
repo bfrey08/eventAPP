@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   post '/events/:event_id/attendees', to: 'attendees#create'
   patch '/events/:event_id/attendees/:attendee_id', to: 'attendees#update'
 
+  post '/events/:event_id/attendees/:attendee_id/rooms/:room_id/chats', to: 'chats#create'
 
 
+  mount ActionCable.server => '/cable'
 end
