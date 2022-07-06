@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
 
     message = Chat.create(message: params[:message], room_id: room.id, attendee_id: attendee.id)
 
-    RoomChannel.broadcast_to(room, message)
+    # RoomChannel.broadcast_to(room, message)
 
     redirect_to "/events/#{event.id}"
   end
