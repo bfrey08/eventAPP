@@ -2,7 +2,7 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("RoomsChannel", {
   connected() {
-    console.log("this worked!")
+    console.log("Connected to WebSocket")
   },
 
   disconnected() {
@@ -10,6 +10,14 @@ consumer.subscriptions.create("RoomsChannel", {
   },
 
   received(data) {
-    $("#update-message").html(data);
+      let chats = document.getElementById('chats');
+      let room_id = chats.dataset.roomId
+      let message = data["attendee"]["name"] + ': ' + data["message"]["message"];
+
+      let div = document.createElement('div');
+      div.classList.add('recent-message');
+      div.innerHTML = message;
+
+      chats.insertBefore(div, null);
   }
 });

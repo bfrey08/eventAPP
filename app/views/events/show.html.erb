@@ -59,15 +59,13 @@
                       <% end %>
                     <br>
                       <% @attendee.rooms.distinct.each do |room| %>
-                        <div class="chat" data-channel-subscribe="room" data-room-id="<%= room.id %>">
+                        <div class="chat" id="chats" data-channel-subscribe="room" data-room-id="<%= room.id %>">
                           <p>Room: <%= room.name %></p>
                           <% room.chats.each do |chat| %>
                             <div class="message-content">
-                              <%= chat.message %>
+                              <%= "#{chat.attendee.name}: #{chat.message}" %>
                             </div>
                           <% end %>
-                            <div class="message-content" id="update-message"?
-                            </div>
                         </div>
                         <%= form_with(url: "/events/#{@event.id}/attendees/#{@attendee.id}/rooms/#{room.id}/chats", method: :post, id: "message") do |form| %>
                           <%= form.text_field :message %>
@@ -75,13 +73,14 @@
                         <% end %>
                       <% end %>
                     <% end %>
-
+                    <div class="invite-link">
                     <% if session[:event_id] == @event.id %>
                     <p> <%= link_to("invite yur m8s", "/events/#{@event.id}/attendees/new") %> </p>
                     <p> <%= button_to("logout", "/events/#{@event.id}/login", method: :delete) %> </p>
                     <% end %>
                     <% if @attendee %>
                     <% end %>
+                    </div>
                 </div>
             </div>
 
