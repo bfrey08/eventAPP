@@ -66,6 +66,8 @@
                               <%= chat.message %>
                             </div>
                           <% end %>
+                            <div class="message-content" id="update-message"?
+                            </div>
                         </div>
                         <%= form_with(url: "/events/#{@event.id}/attendees/#{@attendee.id}/rooms/#{room.id}/chats", method: :post, id: "message") do |form| %>
                           <%= form.text_field :message %>
@@ -82,13 +84,12 @@
                     <% end %>
                 </div>
             </div>
+
         </section>
+
     </body>
 
-  <div class="d-none" data-role="message-template">
-    <div class="message-content" data-role="message-text">
-    </div>
-  </div>
+
 
 
 </html>
