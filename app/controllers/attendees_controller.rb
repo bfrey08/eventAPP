@@ -18,7 +18,7 @@ class AttendeesController < ApplicationController
 
       attendee_ids = attendee_list.map { |attendee| attendee.id}
       attendee_list.each do |attendee|
-        Chat.create!(message: nil, attendee_id: attendee.id, room_id: event.rooms.find_by(name: "primary room").id)
+        Chat.create!(message:"has entered the chat", attendee_id: attendee.id, room_id: event.rooms.find_by(name: "primary room").id)
       end
       TwilioService.create_message(attendee_list)
 

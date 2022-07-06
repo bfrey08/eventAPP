@@ -1,6 +1,9 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("RoomsChannel", {
+let chats = document.getElementById('chats');
+let room_id = chats.dataset.roomId
+
+consumer.subscriptions.create({channel: "RoomsChannel", room_id: room_id }, {
   connected() {
     console.log("Connected to WebSocket")
   },
@@ -10,14 +13,13 @@ consumer.subscriptions.create("RoomsChannel", {
   },
 
   received(data) {
-      let chats = document.getElementById('chats');
-      let room_id = chats.dataset.roomId
-      let message = data["attendee"]["name"] + ': ' + data["message"]["message"];
 
-      let div = document.createElement('div');
-      div.classList.add('recent-message');
-      div.innerHTML = message;
+      let message = data["attendee"]["name"] + ': ' + data["message"]["message"] + "<br>";
 
-      chats.insertBefore(div, null);
+      let div = document.getElementById('incoming-chats');
+
+      div.insertAdjacentHTML("beforeend", message);
+
+      $("*").animate({ scrollTop: $("*").prop("scrollHeight")}, 1000);
   }
 });

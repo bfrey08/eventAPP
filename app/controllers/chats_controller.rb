@@ -5,9 +5,8 @@ class ChatsController < ApplicationController
     attendee = Attendee.find(params[:attendee_id])
 
     message = Chat.create(message: params[:message], room_id: room.id, attendee_id: attendee.id)
-
-    response = ActionCable.server.broadcast("RoomsChannel", {message: message , attendee: attendee})
-
-    redirect_to "/events/#{event.id}"
+    previous_message = Chat.where('id < ?', message.id).last
+    response = ActionCable.server.broadcast("room_#{room.id}", {message: message , attendee: attendee})
+    redirect_to event_path
   end
 end

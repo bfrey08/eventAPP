@@ -2,19 +2,19 @@ class EventsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def show
-    if not session[:attendee]
-      redirect_to '/events/new'
-    end
     @event = Event.find(params[:event_id])
     session[:return_to] = "/events/#{@event.id}"
-    if session[:attendee]
+    if session[:attendee] && Attendee.find(session[:attendee]).event_id == @event.id
       @attendee = Attendee.find(session[:attendee])
+    else
+      redirect_to '/'
     end
     @host = @event.attendees.first
     @attendees = @event.attendees.all
   end
 
   def new
+
   end
 
   def create

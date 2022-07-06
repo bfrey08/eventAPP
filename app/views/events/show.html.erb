@@ -3,8 +3,10 @@
     <head>
         <title>this is your event bitch </title>
         <meta charset="utf-8">
+
     </head>
     <body>
+
         <section id="eventfront">
             <div id="wrapper">
                 <div id="left">
@@ -60,12 +62,14 @@
                     <br>
                       <% @attendee.rooms.distinct.each do |room| %>
                         <div class="chat" id="chats" data-channel-subscribe="room" data-room-id="<%= room.id %>">
-                          <p>Room: <%= room.name %></p>
+                          <p>All Chat: <%= room.id %></p>
                           <% room.chats.each do |chat| %>
-                            <div class="message-content">
+                            <%= content_tag :div, class: "message-content", id: dom_id(chat) do %>
                               <%= "#{chat.attendee.name}: #{chat.message}" %>
-                            </div>
+                            <% end %>
                           <% end %>
+                        </div>
+                        <div class="chat" id="incoming-chats">
                         </div>
                         <%= form_with(url: "/events/#{@event.id}/attendees/#{@attendee.id}/rooms/#{room.id}/chats", method: :post, id: "message") do |form| %>
                           <%= form.text_field :message %>
@@ -85,6 +89,7 @@
             </div>
 
         </section>
+
 
     </body>
 

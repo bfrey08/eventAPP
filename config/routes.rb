@@ -13,8 +13,7 @@ Rails.application.routes.draw do
 
   get '/events/new', to: 'events#new'
   post '/events/new', to: 'events#create'
-  get '/events/:event_id', to: 'events#show'
-  get '/events/:event_id', to: 'events#show'
+  get '/events/:event_id', to: 'events#show', as: :event
 
   delete '/events/:event_id/login', to: 'event_sessions#destroy'
   post '/events/:event_id/login', to: 'event_sessions#create'
