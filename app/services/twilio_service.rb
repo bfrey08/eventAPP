@@ -9,7 +9,7 @@ class TwilioService
     client = Twilio::REST::Client.new(account_sid, auth_token)
     attendees.each do |attendee|
       body = "you are invited to '#{attendee.event.name}' by #{attendee.event.attendees.first.name}, join us: #{Rails.application.credentials.base_url}/events/#{attendee.event.id}/attendees/#{attendee.id}/login/#{attendee.api_key}"
-      client.messages.create(from: from, to: attendee.phone_number, body: body)
+      client.messages.create(from: from, to: attendee.phone_number_with_prefix, body: body)
     end
   end
 
@@ -22,7 +22,7 @@ class TwilioService
     client = Twilio::REST::Client.new(account_sid, auth_token)
     verification_service = client.verify.services(service_sid)
 
-    verification_service.verifications.create(to: attendee.phone_number, channel: 'sms')
+    verification_service.verifications.create(to: attendee.phone_number_with_prefix, channel: 'sms')
   end
 
   def self.verify_otp_code?(otp_code, phone_number)
