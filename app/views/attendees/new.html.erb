@@ -58,7 +58,7 @@
                 label2.innerHTML = 'GIVE ME THEIR #:';
                 let input2 = document.createElement('input');
                 input2.type = 'text';
-                input2.onkeydown = function() {numberFormat(this)};
+                input2.oninput = function() {numberFormat(this)};
                 input2.name = `attendee[][phone_number]`;
                 p2.appendChild(label2);
                 p2.appendChild(input2);
