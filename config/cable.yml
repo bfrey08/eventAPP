@@ -9,5 +9,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://h:asdfqwer1234asdf@ec2-111-1-1-1.compute-1.amazonaws.com:111" } %>
+  url: <%= ENV.fetch("REDIS_URL") { "redis://:p83f5c498bf0b669ae7c19ee08852f0e498b21fcd064f643cd13f18f55e0a5d0d@ec2-44-206-144-135.compute-1.amazonaws.com:27089" } %>
   channel_prefix: eventAPP_production
