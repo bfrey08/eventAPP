@@ -28,7 +28,7 @@
                 </p>
                 <p>
                     <p>GIVE ME THEIR #:</p>
-                    <input type="text" id="guest-phone" onkeydown="numberFormat(this)" name="attendee[][phone_number]">
+                    <input type="text" id="guest-phone" oninput="numberFormat(this)" name="attendee[][phone_number]">
                 </p>
             </div>
             <p>
@@ -88,7 +88,7 @@
                 } else if (numStringLength < 7) {
                     return `(${numString.slice(0,3)}) ${numString.slice(3)}`;
                 } else {
-                    return `(${numString.slice(0,3)}) ${numString.slice(3,6)}-${numString.slice(6,9)}`;
+                    return `(${numString.slice(0,3)}) ${numString.slice(3,6)}-${numString.slice(6,10)}`;
                 }
             }
         </script>

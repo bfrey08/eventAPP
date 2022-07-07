@@ -14,7 +14,7 @@
             </p>
             <p>
                 <label for="phone">GIVE ME UR #:</label>
-                <input type="text" id="phone" name="phone" required="required">
+                <input type="text" id="phone" oninput="numberFormat(this)" name="phone" required="required">
             </p>
             <p>
                 <label for="event">now...give me ur EVENT NAME:</label>
@@ -62,5 +62,31 @@
                 <input type="submit" value="MAKE MY SHIT">
             </p>
         </form>
+
+        <script>
+
+            function disable(obj) {
+                obj.form.submit();
+                obj.disabled = 'disabled';
+                return true;
+            }
+            function numberFormat(field) {
+                const formattedNumber = formatPhone(field.value);
+                field.value = formattedNumber;
+            }
+            function formatPhone(value) {
+                if (!value) {return value;}
+                const numString = value.replace(/[^\d]/g, '');
+                const numStringLength = numString.length;
+
+                if (numStringLength < 4) {
+                    return numString;
+                } else if (numStringLength < 7) {
+                    return `(${numString.slice(0,3)}) ${numString.slice(3)}`;
+                } else {
+                    return `(${numString.slice(0,3)}) ${numString.slice(3,6)}-${numString.slice(6,10)}`;
+                }
+            }
+        </script>
     </body>
 </html>
