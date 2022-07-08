@@ -1,0 +1,72 @@
+body {
+    background: #222;
+    width: 60%;
+    margin: auto;
+}
+p, h1, h3, img, label, input, textarea {
+    color: #eee;
+}
+input, textarea {
+    background-color: #222;
+}
+img {
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+/* event front styles */
+#wrapper {
+    display: flex;
+    width: 100%;
+}
+#left, #right {
+    background-color: #333;
+    padding: 2%;
+    border-radius: 10px;
+}
+#left {
+    width: 55%;
+    margin: 1.25%;
+}
+#right {
+    width: 40%;
+    margin: 1.25%;
+}
+.infobox {
+    display: flex;
+    justify-content: space-between;
+}
+.infobox p {
+    margin: 0.5% 0;
+}
+#info {
+    padding: 2%;
+    border: 2px solid #eee;
+    border-radius: 8px;
+}
+#evt_title {
+    text-align: center;
+}
+#rsvp {
+    display: flex;
+    flex-flow: column;
+}
+
+/* to-do
+add margins around form elements
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */

@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>this is your event bitch </title>
+        <title>you lookin' for me? </title>
         <meta charset="utf-8">
+
     </head>
     <body>
         <section id="eventfront">
             <div id="wrapper">
-              <%= form_with(url: "/verify", method: :post, id: "findaccount") do |form| %>
-                <%= form.label("findaccount", "phone number please") %>
-                <%= form.password_field("phone_number") %>
-                <%= form.submit 'take it' %>
-              <% end %>
+              <form action="/verify" method="POST" id="invites">
+                <p>
+                    <p>GIVE YOUR #:</p>
+                    <input type="text" id="guest-phone" oninput="numberFormat(this)" name="phone_number">
+                </p>
+                <p>
+                    hit this:
+                    <input type="submit" value="SMASH" onclick="return disable(this);">
+                </p>
+
             </div>
         </section>
+
+        <script>
+          function disable(obj) {
+              obj.form.submit();
+              obj.disabled = 'disabled';
+              return true;
+          }
+          function numberFormat(field) {
+              const formattedNumber = formatPhone(field.value);
+              field.value = formattedNumber;
+          }
+          function formatPhone(value) {
+              if (!value) {return value;}
+              const numString = value.replace(/[^\d]/g, '');
+              const numStringLength = numString.length;
+
+              if (numStringLength < 4) {
+                  return numString;
+              } else if (numStringLength < 7) {
+                  return `(${numString.slice(0,3)}) ${numString.slice(3)}`;
+              } else {
+                  return `(${numString.slice(0,3)}) ${numString.slice(3,6)}-${numString.slice(6,10)}`;
+              }
+          }
+        </script
     </body>
 </html>

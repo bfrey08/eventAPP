@@ -1,6 +1,7 @@
 require 'bcrypt'
 class Event < ApplicationRecord
   has_many :attendees
+  has_many :rooms, through: :attendees
   include BCrypt
 
   def password
